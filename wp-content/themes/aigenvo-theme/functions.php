@@ -36,7 +36,6 @@ function aigenvo_scripts() {
             }
         }
     }
-    }
 }
 add_action( 'wp_enqueue_scripts', 'aigenvo_scripts' );
 
