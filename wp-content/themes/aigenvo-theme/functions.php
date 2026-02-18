@@ -36,8 +36,20 @@ function aigenvo_scripts() {
             }
         }
     }
+    }
 }
 add_action( 'wp_enqueue_scripts', 'aigenvo_scripts' );
+
+/**
+ * Add type="module" to scripts
+ */
+function aigenvo_add_module_type( $tag, $handle, $src ) {
+    if ( 'aigenvo-main' === $handle || 'vite-client' === $handle ) {
+        return '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'aigenvo_add_module_type', 10, 3 );
 
 /**
  * Theme Support
